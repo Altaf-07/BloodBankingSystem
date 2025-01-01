@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Registration - Blood Banking System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Donor Registration</h1>
+        <p>Join us today and help save lives by donating blood.</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="donor-registration.html" class="active">Donor Registration</a>
+        <a href="search-blood.html">Search Blood</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <form action="register-donor" method="POST" class="donor-form">
+            <div class="form-row">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-row">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+
+            <div class="form-row">
+                <label for="bloodType">Blood Type:</label>
+                <select id="bloodType" name="bloodType" required>
+                    <option value="A+">A+</option>
+                    <option value="B+">B+</option>
+                    <option value="O+">O+</option>
+                    <option value="AB+">AB+</option>
+                </select>
+            </div>
+
+            <button type="submit" class="cta-btn">Register Now</button>
+        </form>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Blood Banking System. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
