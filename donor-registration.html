@@ -136,6 +136,53 @@
             font-size: 1rem;
             margin: 0;
         }
+
+        /* Eligibility Check Section */
+        .eligibility-check {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+            display: none; /* Initially hidden */
+        }
+
+        .eligibility-check h3 {
+            font-size: 1.6rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .eligibility-check label {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .eligibility-check input[type="number"],
+        .eligibility-check select {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            margin-top: 8px;
+        }
+
+        .eligibility-check button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+
+        .eligibility-check button:hover {
+            background-color: #45a049;
+        }
+
     </style>
 </head>
 <body>
@@ -181,11 +228,66 @@
 
             <button type="submit" class="cta-btn">Register Now</button>
         </form>
+
+        <!-- Eligibility Check Button -->
+        <button class="cta-btn" onclick="toggleEligibilityForm()">Check Eligibility</button>
+
+        <!-- Eligibility Check Section -->
+        <section class="eligibility-check" id="eligibilitySection">
+            <h3>Are You Eligible to Donate Blood?</h3>
+            <form id="eligibilityForm">
+                <div class="form-row">
+                    <label for="eligibilityAge">Age:</label>
+                    <input type="number" id="eligibilityAge" name="eligibilityAge" placeholder="Enter your age" required>
+                </div>
+                <div class="form-row">
+                    <label for="eligibilityWeight">Weight:</label>
+                    <input type="number" id="eligibilityWeight" name="eligibilityWeight" placeholder="Enter your weight (in kg)" required>
+                </div>
+                <div class="form-row">
+                    <label for="eligibilityHealth">Do you have any major health issues?</label>
+                    <select id="eligibilityHealth" name="eligibilityHealth" required>
+                        <option value="No">No</option>
+                        <option value="Yes">Yes</option>
+                    </select>
+                </div>
+                <button type="button" onclick="checkEligibility()">Check Eligibility</button>
+            </form>
+            <div id="eligibilityResult" style="margin-top: 15px; font-weight: bold;"></div>
+        </section>
     </main>
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 Blood Banking System. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        // Toggle the visibility of the eligibility check section
+        function toggleEligibilityForm() {
+            var eligibilitySection = document.getElementById("eligibilitySection");
+            if (eligibilitySection.style.display === "none" || eligibilitySection.style.display === "") {
+                eligibilitySection.style.display = "block";
+            } else {
+                eligibilitySection.style.display = "none";
+            }
+        }
+
+        function checkEligibility() {
+            var age = document.getElementById("eligibilityAge").value;
+            var weight = document.getElementById("eligibilityWeight").value;
+            var health = document.getElementById("eligibilityHealth").value;
+            var result = document.getElementById("eligibilityResult");
+
+            // Eligibility logic
+            if (age >= 18 && age <= 65 && weight >= 50 && health == "No") {
+                result.textContent = "You are eligible to donate blood!";
+                result.style.color = "green";
+            } else {
+                result.textContent = "You are not eligible to donate blood.";
+                result.style.color = "red";
+            }
+        }
+    </script>
 </body>
 </html>
